@@ -138,7 +138,7 @@ var v=class extends a{
 
 // ===================== WATERMARK + 時刻 =====================
 var k=class extends a{
-  constructor(){super("Watermark","Visual",{Text:"MinebungsX"});this._clockInterval=null;}
+  constructor(){super("Watermark","Visual",{Text:"MinebunsX"});this._clockInterval=null;}
   _getTime(){let d=new Date();return[d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");}
   _updateClock(){let el=document.querySelector(".mb-wm-time");if(el)el.textContent=this._getTime();}
   onSettingUpdate(){let e=document.querySelector(".mb-watermark");if(e)e.querySelector(".mb-wm-text").textContent=this.options.Text;}
