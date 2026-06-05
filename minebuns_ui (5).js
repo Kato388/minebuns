@@ -241,7 +241,7 @@ var S=class{
     document.addEventListener("mouseup",()=>dragging=false);
   }
   // keybind ラベル表示用マップ
-  static keyLabels={"KeyG":"G","KeyK":"K","KeyF":"F","KeyC":"C","KeyI":"I","KeyH":"H","KeyJ":"J","KeyL":"L","ShiftRight":"SHIFT"};
+  static keyLabels={"KeyG":"G","KeyK":"K","KeyF":"F","KeyT":"T","KeyI":"I","KeyH":"H","KeyJ":"J","KeyL":"L","ShiftRight":"SHIFT"};
   addButton(mod){
     let wrap=document.createElement("div");wrap.className="gui-button-container";
     let btn=document.createElement("div");btn.className="gui-button"+(mod.isEnabled?" enabled":"");
@@ -316,8 +316,8 @@ var P=class extends a{constructor(){super("Speed","Movement",{Speed:15});}onRend
 var A=class extends a{constructor(){super("FreeHeadcoins","Misc");}async onEnable(){let e=await o.network.get("users/freeSpinner");o.stores.get("userState").user.balance.headcoins+=e.data.amount;h.modules.FreeHeadcoins.disable();}};
 var Fl=class extends a{constructor(){super("Fill","Misc",{Radius:4,"Block ID":652,"Chunk Interval":500});this.lastExecutionTime=0;}onRender(){if(!o?.gameWorld?.player)return;let R=this.options.Radius,interval=this.options["Chunk Interval"],now=Date.now();if(now-this.lastExecutionTime<interval)return;this.lastExecutionTime=now;let pos=Object.values(o.gameWorld.player.position).splice(0,3).map(Math.floor);for(let ix=-R;ix<=R;ix++)for(let iy=-R;iy<=R;iy++)for(let iz=-R;iz<=R;iz++){let[bx,by,bz]=[pos[0]+ix,pos[1]+iy,pos[2]+iz];if(o.gameWorld.chunkManager.getBlock(bx,by,bz)==0)o.gameWorld.chunkManager.setBlock(bx,by,bz,this.options["Block ID"],true,true);}}};
 
-// Chams: tキー
-var D=class extends a{constructor(){super("Chams","Visual",null,"Keyt");}onRender(){if(!o?.gameWorld?.player)return;o.gameWorld.server.players.forEach(p=>{p.playerMaterial.depthTest=false;p.playerMaterial.wireframe=true;});}onDisable(){o.gameWorld.server.players.forEach(p=>{p.playerMaterial.depthTest=true;p.playerMaterial.wireframe=false;});}};
+// Chams: Tキー
+var D=class extends a{constructor(){super("Chams","Visual",null,"KeyT");}onRender(){if(!o?.gameWorld?.player)return;o.gameWorld.server.players.forEach(p=>{p.playerMaterial.depthTest=false;p.playerMaterial.wireframe=true;});}onDisable(){o.gameWorld.server.players.forEach(p=>{p.playerMaterial.depthTest=true;p.playerMaterial.wireframe=false;});}};
 
 var R2=class extends a{constructor(){super("Scaffold","Movement",null);}onRender(){if(!o?.gameWorld?.player)return;let pos=Object.values(o.gameWorld.player.position).splice(0,3).map(Math.floor);pos[1]--;let itemId=o.gameWorld.player.currentInventoryItemId;let blockId=o.gameWorld.chunkManager.getBlock(...pos);let replaceable=o.gameWorld.items[blockId]?.replaceable||false;if((blockId==0||replaceable)&&itemId)o.gameWorld.chunkManager.setBlock(...pos,itemId,true,true);}};
 
@@ -423,7 +423,7 @@ var Kb=class extends a{
     el.style.cssText="position:fixed;bottom:60px;left:12px;z-index:1001;background:rgba(0,0,0,0.88);border:1px solid rgba(0,255,80,0.25);box-shadow:0 0 12px rgba(0,255,80,0.18);font-family:'Orbitron','Courier New',monospace;color:#b0ffcc;min-width:200px;user-select:none;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));";
     const binds=[
       ["I","Instabreak"],["K","Killaura"],["F","Fly"],["G","GunModifier"],
-      ["J","NoClip"],["C","Chams"],["H","Spider"],["L","NightVision"],["SHIFT","ClickGUI"]
+      ["J","NoClip"],["T","Chams"],["H","Spider"],["L","NightVision"],["SHIFT","ClickGUI"]
     ];
     let header=document.createElement("div");
     header.style.cssText="padding:6px 12px;cursor:move;font-size:9px;font-weight:900;letter-spacing:3px;color:#00ff50;text-shadow:0 0 8px rgba(0,255,80,0.6);border-bottom:1px solid rgba(0,255,80,0.18);background:linear-gradient(180deg,rgba(0,255,80,0.08) 0%,transparent 100%);";
