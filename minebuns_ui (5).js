@@ -94,6 +94,7 @@ var mbCSS=`
 .mb-wm-text{background:linear-gradient(90deg,#00ff50,#80ffb0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .mb-wm-ver{color:rgba(0,255,80,0.75);font-size:9px;margin-left:6px;}
 .mb-wm-time{color:rgba(0,255,80,0.7);font-family:'Share Tech Mono',monospace;font-size:11px;margin-left:10px;letter-spacing:2px;}
+.mb-wm-credit{color:rgba(0,255,80,0.28);font-family:'Share Tech Mono',monospace;font-size:7px;margin-left:14px;letter-spacing:2px;font-style:italic;}
 .with-animations .gui-panel{animation:mbPanelIn .2s cubic-bezier(.4,0,.2,1);}
 @keyframes mbPanelIn{from{opacity:0;transform:translateY(-6px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 .with-animations .gui-setting-container{animation:mbSlideIn .16s ease-out forwards;}
@@ -147,7 +148,7 @@ var k=class extends a{
     if(!e){
       e=document.createElement("div");e.className="mb-watermark";
       e.style.cssText="position:fixed;top:0;left:0;padding:5px 18px;user-select:none;z-index:1000;font-family:'Orbitron','Courier New',monospace;font-size:16px;font-weight:900;letter-spacing:4px;background:rgba(0,0,0,0.85);border-bottom:1px solid rgba(0,255,80,0.22);border-right:1px solid rgba(0,255,80,0.1);clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);display:flex;align-items:center;gap:0;";
-      e.innerHTML=`<span class="mb-wm-bracket">[</span><span class="mb-wm-text">${this.options.Text}</span><span class="mb-wm-bracket">]</span><span class="mb-wm-ver">v1.3</span><span class="mb-wm-time">${this._getTime()}</span>`;
+      e.innerHTML=`<span class="mb-wm-bracket">[</span><span class="mb-wm-text">${this.options.Text}</span><span class="mb-wm-bracket">]</span><span class="mb-wm-ver">v1.3</span><span class="mb-wm-time">${this._getTime()}</span><span class="mb-wm-credit">Design. hidemasa</span>`;
       document.body.appendChild(e);
     }
     e.style.display="flex";
